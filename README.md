@@ -2,6 +2,12 @@
 
 Una infografía educativa moderna y interactiva que presenta los conceptos fundamentales de las redes neuronales de manera visual y accesible.
 
+## 🌐 **Ver la Infografía**
+
+**[🔗 https://carlosahp.github.io/RedNeuronal/](https://carlosahp.github.io/RedNeuronal/)**
+
+*Infografía interactiva desplegada con GitHub Pages*
+
 ## 🧠 Contenido
 
 Esta infografía cubre los siguientes temas basados en el curso de Introducción a las Redes Neuronales:
