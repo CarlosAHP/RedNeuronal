@@ -1,28 +1,5 @@
-// Navigation functionality
+// Infographic functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const navButtons = document.querySelectorAll('.nav-btn');
-    const sections = document.querySelectorAll('.content-section');
-    
-    // Add click event listeners to navigation buttons
-    navButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetSection = this.getAttribute('data-section');
-            
-            // Remove active class from all buttons and sections
-            navButtons.forEach(btn => btn.classList.remove('active'));
-            sections.forEach(section => section.classList.remove('active'));
-            
-            // Add active class to clicked button and corresponding section
-            this.classList.add('active');
-            document.getElementById(targetSection).classList.add('active');
-            
-            // Smooth scroll to top of content
-            document.querySelector('.main-content').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
-    });
     
     // Add smooth scrolling to all internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -38,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add animation on scroll for cards
+    // Add animation on scroll for video sections
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -53,33 +30,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
     
-    // Observe all cards for animation
-    document.querySelectorAll('.card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
+    // Observe all video sections for animation
+    document.querySelectorAll('.video-section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
     });
     
-    // Add hover effects to timeline items
-    document.querySelectorAll('.timeline-item').forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.02)';
+    // Add hover effects to video sections
+    document.querySelectorAll('.video-section').forEach(section => {
+        section.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
             this.style.transition = 'transform 0.3s ease';
         });
         
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-        });
-    });
-    
-    // Add click animation to buttons
-    document.querySelectorAll('.nav-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
+        section.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
         });
     });
     
@@ -101,15 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Start typing effect after a short delay
         setTimeout(typeWriter, 500);
     }
-    
-    // Add parallax effect to header
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const header = document.querySelector('.header');
-        if (header) {
-            header.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-    });
     
     // Add progress indicator for current section
     const progressBar = document.createElement('div');
@@ -133,59 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         progressBar.style.width = scrolled + '%';
     });
     
-    // Add keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        const activeButton = document.querySelector('.nav-btn.active');
-        const buttons = Array.from(navButtons);
-        const currentIndex = buttons.indexOf(activeButton);
-        
-        if (e.key === 'ArrowLeft' && currentIndex > 0) {
-            buttons[currentIndex - 1].click();
-        } else if (e.key === 'ArrowRight' && currentIndex < buttons.length - 1) {
-            buttons[currentIndex + 1].click();
-        }
-    });
-    
-    // Add tooltip functionality for complex terms
-    const tooltipElements = document.querySelectorAll('[data-tooltip]');
-    tooltipElements.forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            const tooltip = document.createElement('div');
-            tooltip.className = 'tooltip';
-            tooltip.textContent = this.getAttribute('data-tooltip');
-            tooltip.style.cssText = `
-                position: absolute;
-                background: #333;
-                color: white;
-                padding: 0.5rem 1rem;
-                border-radius: 5px;
-                font-size: 0.9rem;
-                z-index: 1000;
-                pointer-events: none;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            `;
-            
-            document.body.appendChild(tooltip);
-            
-            const rect = this.getBoundingClientRect();
-            tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
-            tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
-            
-            setTimeout(() => {
-                tooltip.style.opacity = '1';
-            }, 10);
-            
-            this.addEventListener('mouseleave', function() {
-                tooltip.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.removeChild(tooltip);
-                }, 300);
-            });
-        });
-    });
-    
-    // Add search functionality (bonus feature)
+    // Add search functionality
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.placeholder = 'Buscar en la infografía...';
@@ -203,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
         opacity: 0;
         transform: translateY(-20px);
         transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
     `;
     
     document.body.appendChild(searchInput);
@@ -223,13 +130,27 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.opacity = '0';
             this.style.transform = 'translateY(-20px)';
             this.value = '';
+            // Clear search highlights
+            document.querySelectorAll('p, li, h2, h3, h4').forEach(element => {
+                element.style.backgroundColor = '';
+                element.style.borderRadius = '';
+                element.style.padding = '';
+            });
         }
     });
     
     // Search functionality
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
-        if (searchTerm.length < 2) return;
+        if (searchTerm.length < 2) {
+            // Clear highlights
+            document.querySelectorAll('p, li, h2, h3, h4').forEach(element => {
+                element.style.backgroundColor = '';
+                element.style.borderRadius = '';
+                element.style.padding = '';
+            });
+            return;
+        }
         
         const allText = document.querySelectorAll('p, li, h2, h3, h4');
         allText.forEach(element => {
@@ -322,55 +243,175 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
         }, 1000);
     });
+    
+    // Add video number highlighting on scroll
+    let currentVideo = 0;
+    const videoSections = document.querySelectorAll('.video-section');
+    
+    const videoObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const videoNumber = entry.target.querySelector('.video-number');
+                if (videoNumber) {
+                    videoNumber.style.background = 'rgba(255, 255, 255, 0.3)';
+                    videoNumber.style.transform = 'scale(1.1)';
+                    videoNumber.style.transition = 'all 0.3s ease';
+                }
+            } else {
+                const videoNumber = entry.target.querySelector('.video-number');
+                if (videoNumber) {
+                    videoNumber.style.background = 'rgba(255, 255, 255, 0.2)';
+                    videoNumber.style.transform = 'scale(1)';
+                }
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+    
+    videoSections.forEach(section => {
+        videoObserver.observe(section);
+    });
+    
+    // Add keyboard navigation for video sections
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown' && e.ctrlKey) {
+            e.preventDefault();
+            const currentSection = document.querySelector('.video-section:hover');
+            if (currentSection) {
+                const nextSection = currentSection.nextElementSibling;
+                if (nextSection && nextSection.classList.contains('video-section')) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        } else if (e.key === 'ArrowUp' && e.ctrlKey) {
+            e.preventDefault();
+            const currentSection = document.querySelector('.video-section:hover');
+            if (currentSection) {
+                const prevSection = currentSection.previousElementSibling;
+                if (prevSection && prevSection.classList.contains('video-section')) {
+                    prevSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+    });
+    
+    // Add tooltip functionality for complex terms
+    const tooltipElements = document.querySelectorAll('[data-tooltip]');
+    tooltipElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = this.getAttribute('data-tooltip');
+            tooltip.style.cssText = `
+                position: absolute;
+                background: #333;
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+                font-size: 0.9rem;
+                z-index: 1000;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            `;
+            
+            document.body.appendChild(tooltip);
+            
+            const rect = this.getBoundingClientRect();
+            tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+            tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
+            
+            setTimeout(() => {
+                tooltip.style.opacity = '1';
+            }, 10);
+            
+            this.addEventListener('mouseleave', function() {
+                tooltip.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(tooltip);
+                }, 300);
+            });
+        });
+    });
 });
 
 // Add CSS for print styles
 const printStyles = document.createElement('style');
 printStyles.textContent = `
     @media print {
-        .nav, .footer, button, input {
+        button, input {
             display: none !important;
         }
         
-        .container {
+        .infographic-container {
             box-shadow: none;
             max-width: none;
         }
         
-        .header {
+        .infographic-header {
             background: #667eea !important;
             -webkit-print-color-adjust: exact;
             color-adjust: exact;
         }
         
-        .card {
+        .video-section {
             break-inside: avoid;
             box-shadow: none;
             border: 1px solid #ddd;
+            margin-bottom: 2rem;
         }
         
-        .content-section {
-            display: block !important;
+        .video-header {
+            background: #667eea !important;
+            -webkit-print-color-adjust: exact;
+            color-adjust: exact;
         }
         
-        .timeline::before {
-            display: none;
+        .video-content {
+            background: white !important;
         }
         
-        .timeline-item {
-            flex-direction: column !important;
-            padding-left: 0 !important;
+        .content-card,
+        .tool-card,
+        .concept-card,
+        .definition-card,
+        .neuron-model,
+        .rules,
+        .code-example,
+        .examples,
+        .formula-card,
+        .limitation-card,
+        .sigmoid-info,
+        .example-data,
+        .calculation-steps,
+        .algorithm-steps,
+        .learning-rate,
+        .sgd-data,
+        .sgd-steps,
+        .architecture,
+        .calculation,
+        .advantages,
+        .layer-calc,
+        .history,
+        .algorithm,
+        .cnn-features,
+        .cnn-operations,
+        .transfer-cases,
+        .techniques,
+        .sgd-advantages,
+        .batch-sizes,
+        .linear,
+        .nonlinear,
+        .innovation {
+            background: #f8f9fa !important;
+            border: 1px solid #ddd !important;
         }
         
-        .timeline-marker {
-            position: static !important;
-            transform: none !important;
-            margin-bottom: 1rem;
-        }
-        
-        .timeline-content {
-            width: 100% !important;
-            margin: 0 !important;
+        .infographic-footer {
+            background: #333 !important;
+            -webkit-print-color-adjust: exact;
+            color-adjust: exact;
         }
     }
 `;
