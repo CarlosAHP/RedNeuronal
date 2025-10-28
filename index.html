@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes Neuronales: Una Guía Visual</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="main-title">
+                    <i class="fas fa-brain"></i>
+                    Redes Neuronales
+                </h1>
+                <p class="subtitle">Una guía visual completa desde los fundamentos hasta las aplicaciones avanzadas</p>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-content">
+                <button class="nav-btn active" data-section="intro">Introducción</button>
+                <button class="nav-btn" data-section="fundamentals">Fundamentos</button>
+                <button class="nav-btn" data-section="perceptron">Perceptrón</button>
+                <button class="nav-btn" data-section="multilayer">Redes Multicapa</button>
+                <button class="nav-btn" data-section="training">Entrenamiento</button>
+                <button class="nav-btn" data-section="advanced">Avanzado</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Introduction Section -->
+            <section id="intro" class="content-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-play-circle"></i> Introducción a las Redes Neuronales</h2>
+                </div>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Aplicaciones Cotidianas</h3>
+                        <ul>
+                            <li>Vehículos autónomos</li>
+                            <li>Asistentes virtuales</li>
+                            <li>Reconocimiento de imágenes</li>
+                            <li>Diagnóstico médico</li>
+                            <li>Generación de contenido</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Contenido del Curso</h3>
+                        <ul>
+                            <li>Conceptos preliminares</li>
+                            <li>Fundamentos teóricos</li>
+                            <li>Implementación práctica</li>
+                            <li>Del perceptrón a redes profundas</li>
+                            <li>Problemas prácticos</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Herramientas Necesarias</h3>
+                        <ul>
+                            <li>Python + NumPy</li>
+                            <li>Anaconda</li>
+                            <li>Visual Studio Code</li>
+                            <li>Git</li>
+                            <li>Google Colab</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-lightbulb"></i> ¿Qué es la Inteligencia Artificial?</h3>
+                    <p>La IA busca replicar la mente humana o resolver problemas racionalmente. La <strong>Prueba de Turing</strong> define la inteligencia operacionalmente, requiriendo capacidades como:</p>
+                    <div class="capabilities">
+                        <span class="capability">Procesamiento de lenguaje</span>
+                        <span class="capability">Representación del conocimiento</span>
+                        <span class="capability">Inferencia</span>
+                        <span class="capability">Síntesis</span>
+                        <span class="capability">Aprendizaje</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fundamentals Section -->
+            <section id="fundamentals" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cogs"></i> Fundamentos del Aprendizaje Automático</h2>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-robot"></i> Machine Learning</h3>
+                    <p>Capacidad de las computadoras para <strong>aprender sin ser programadas explícitamente</strong>, mejorando su desempeño a través de la experiencia.</p>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Tareas de ML</h3>
+                        <ul>
+                            <li><strong>Regresión:</strong> Relacionar entradas con salidas continuas</li>
+                            <li><strong>Clasificación:</strong> Asignar etiquetas a entradas</li>
+                            <li><strong>Clustering:</strong> Encontrar patrones sin etiquetas</li>
+                            <li><strong>Reducción dimensional:</strong> Simplificar características</li>
+                            <li><strong>Modelado generativo:</strong> Crear nuevas instancias</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>Tipos de Aprendizaje</h3>
+                        <ul>
+                            <li><strong>Supervisado:</strong> Datos etiquetados (entrada-salida)</li>
+                            <li><strong>No Supervisado:</strong> Patrones sin etiquetas</li>
+                            <li><strong>Por Refuerzo:</strong> Interacción con ambiente</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Modelos Paramétricos</h3>
+                        <p>Resumen los datos como un conjunto de <strong>parámetros de tamaño fijo</strong>. Las redes neuronales son modelos paramétricos que:</p>
+                        <ul>
+                            <li>Reducen la complejidad espacial</li>
+                            <li>Permiten ajuste automático</li>
+                            <li>Representan experiencia con pocos parámetros</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perceptron Section -->
+            <section id="perceptron" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-circle"></i> Evolución: De McCulloch-Pitts al Perceptrón</h2>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>1943: Neurona McCulloch-Pitts</h3>
+                            <p>Primera neurona artificial con principio "todo o nada":</p>
+                            <ul>
+                                <li>Entradas excitatorias (0 o 1)</li>
+                                <li>Entradas inhibitorias (0 o 1)</li>
+                                <li>Salida binaria (0 o 1)</li>
+                                <li>Si hay entrada inhibitoria activa → salida = 0</li>
+                                <li>Si suma excitatoria ≥ umbral → salida = 1</li>
+                            </ul>
+                            <div class="limitation">
+                                <strong>Limitación:</strong> Solo funciones lógicas básicas, difícil de entrenar
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>1950s: Perceptrón de Rosenblatt</h3>
+                            <p>Inspirado en neuronas biológicas:</p>
+                            <div class="formula">
+                                <strong>y = f(W·x + b)</strong>
+                            </div>
+                            <ul>
+                                <li><strong>x:</strong> vector de entradas</li>
+                                <li><strong>W:</strong> vector de pesos</li>
+                                <li><strong>b:</strong> sesgo</li>
+                                <li><strong>f:</strong> función de activación (escalón)</li>
+                            </ul>
+                            <div class="limitation">
+                                <strong>Limitación:</strong> Solo problemas linealmente separables (no puede resolver XOR)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-function"></i>
+                        </div>
+                        <h3>Funciones de Activación</h3>
+                        <div class="activation-functions">
+                            <div class="func-item">
+                                <strong>Sigmoide:</strong> 1/(1+e^(-x)) → [0,1]
+                                <div class="pros-cons">
+                                    <span class="pro">✓ Suave y derivable</span>
+                                    <span class="con">✗ Desvanecimiento del gradiente</span>
+                                </div>
+                            </div>
+                            <div class="func-item">
+                                <strong>Tanh:</strong> (e^x - e^(-x))/(e^x + e^(-x)) → [-1,1]
+                                <div class="pros-cons">
+                                    <span class="pro">✓ Mejor que sigmoide</span>
+                                    <span class="con">✗ También sufre desvanecimiento</span>
+                                </div>
+                            </div>
+                            <div class="func-item">
+                                <strong>ReLU:</strong> max(0, x)
+                                <div class="pros-cons">
+                                    <span class="pro">✓ Mitiga desvanecimiento</span>
+                                    <span class="pro">✓ Entrenamiento más rápido</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Cálculo de Salida</h3>
+                        <div class="example">
+                            <h4>Ejemplo:</h4>
+                            <p><strong>Entradas:</strong> x₁=8, x₂=4</p>
+                            <p><strong>Pesos:</strong> w₁=0.3, w₂=0.9</p>
+                            <p><strong>Sesgo:</strong> b=5</p>
+                            <div class="calculation">
+                                <p>H = w₁×x₁ + w₂×x₂ + b</p>
+                                <p>H = 0.3×8 + 0.9×4 + 5 = 11.0</p>
+                                <p>y_pred = sigmoide(11.0) ≈ 0.999</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Multilayer Section -->
+            <section id="multilayer" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-sitemap"></i> Redes Neuronales Multicapa</h2>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-puzzle-piece"></i> Solución a las Limitaciones</h3>
+                    <p>Las redes multicapa superan las limitaciones del perceptrón simple al permitir la resolución de <strong>problemas no lineales</strong> mediante:</p>
+                    <ul>
+                        <li>Capa de entrada</li>
+                        <li>Una o más capas ocultas</li>
+                        <li>Capa de salida</li>
+                        <li>Notación matricial para manejar pesos</li>
+                    </ul>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Arquitectura Multicapa</h3>
+                        <div class="architecture-example">
+                            <div class="layer">
+                                <div class="layer-label">Entrada (3)</div>
+                                <div class="neurons">
+                                    <div class="neuron"></div>
+                                    <div class="neuron"></div>
+                                    <div class="neuron"></div>
+                                </div>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="layer">
+                                <div class="layer-label">Oculta (2)</div>
+                                <div class="neurons">
+                                    <div class="neuron"></div>
+                                    <div class="neuron"></div>
+                                </div>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="layer">
+                                <div class="layer-label">Salida (1)</div>
+                                <div class="neurons">
+                                    <div class="neuron"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Cálculo Multicapa</h3>
+                        <div class="calculation-steps">
+                            <h4>Capa Oculta:</h4>
+                            <p>H₁ = x·W₁ + B₁ = [-2.1, 12.9]</p>
+                            <p>A₁ = sigmoide(H₁) = [0.109, 0.999]</p>
+                            
+                            <h4>Capa Salida:</h4>
+                            <p>H₂ = A₁·W₂ + B₂ = -2.258</p>
+                            <p>y_pred = tanh(H₂) = -0.978</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Capacidad de las Redes</h3>
+                        <div class="capacity-info">
+                            <div class="capacity-item">
+                                <strong>Redes Lineales:</strong> Solo problemas linealmente separables
+                            </div>
+                            <div class="capacity-item">
+                                <strong>Con Funciones No Lineales:</strong> Pueden resolver problemas complejos
+                            </div>
+                            <div class="capacity-item">
+                                <strong>ReLU:</strong> Entrenamiento más rápido y efectivo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Training Section -->
+            <section id="training" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-dumbbell"></i> Entrenamiento de Redes Neuronales</h2>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-chart-line"></i> Descenso por Gradiente</h3>
+                    <p>Algoritmo fundamental para optimizar parámetros, basado en el cálculo de Newton (1847):</p>
+                    <ol>
+                        <li><strong>Inicialización:</strong> Valores aleatorios para parámetros</li>
+                        <li><strong>Cálculo del gradiente:</strong> Derivadas parciales de la función de pérdida</li>
+                        <li><strong>Actualización:</strong> Moverse en dirección opuesta al gradiente</li>
+                        <li><strong>Tasa de aprendizaje:</strong> Controla el tamaño del paso</li>
+                    </ol>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Algoritmo General</h3>
+                        <div class="algorithm-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Forward Pass: Calcular predicciones</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Calcular error residual</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <span class="step-text">Backpropagation: Propagar error hacia atrás</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                <span class="step-text">Actualizar pesos con tasa de aprendizaje</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-random"></i>
+                        </div>
+                        <h3>SGD (Stochastic Gradient Descent)</h3>
+                        <p>Mejora del descenso por gradiente tradicional:</p>
+                        <ul>
+                            <li>Usa <strong>mini-batches</strong> en lugar del dataset completo</li>
+                            <li>Permite escapar de mínimos locales</li>
+                            <li>Comportamiento más "errático" pero efectivo</li>
+                            <li>Tamaño del batch depende del problema</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <h3>Backpropagation</h3>
+                        <p>Método esencial para entrenar redes profundas:</p>
+                        <ul>
+                            <li>Inventado en los 70s por Seiman</li>
+                            <li>Popularizado por Geoffrey Hinton (1986)</li>
+                            <li>Propaga error desde salida hacia capas iniciales</li>
+                            <li>Reutiliza términos de error calculados</li>
+                            <li>Permite actualizar todos los pesos eficientemente</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h3><i class="fas fa-calculator"></i> Ejemplo Numérico</h3>
+                    <div class="calculation-example">
+                        <h4>Entrada:</h4>
+                        <p>x = [2, 1], w = [-0.5, 0.5], y_objetivo = 0.6, η = 0.4</p>
+                        
+                        <h4>Forward Pass:</h4>
+                        <p>H = (-0.5×2) + (0.5×1) = -0.5</p>
+                        <p>y_pred = sigmoide(-0.5) ≈ 0.377</p>
+                        
+                        <h4>Error:</h4>
+                        <p>Error = (0.6 - 0.377)² ≈ 0.049</p>
+                        
+                        <h4>Backward Pass:</h4>
+                        <p>Delta = (0.6 - 0.377) × sigmoide'(-0.5) ≈ 0.052</p>
+                        <p>w₁_nuevo = -0.5 + 0.4×0.052×2 = -0.459</p>
+                        <p>w₂_nuevo = 0.5 + 0.4×0.052×1 = 0.520</p>
+                        
+                        <h4>Nueva Predicción:</h4>
+                        <p>y_pred_nueva ≈ 0.401, Error_nuevo ≈ 0.039</p>
+                        <div class="improvement">✓ Error disminuye: 0.049 → 0.039</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advanced Section -->
+            <section id="advanced" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-rocket"></i> Técnicas Avanzadas</h2>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <h3>Redes Convolucionales (CNN)</h3>
+                        <p>Arquitectura especializada para datos multidimensionales:</p>
+                        <ul>
+                            <li><strong>Extracción automática de características</strong></li>
+                            <li><strong>Invarianza a la posición</strong></li>
+                            <li><strong>Convolución:</strong> Kernel compartido que recorre la imagen</li>
+                            <li><strong>Pooling:</strong> Reducción de tamaño sin perder información crítica</li>
+                            <li><strong>Max Pooling:</strong> Selecciona valor máximo en ventana</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3>Transfer Learning</h3>
+                        <p>Aplicar conocimiento de una tarea a otra nueva:</p>
+                        <div class="transfer-cases">
+                            <div class="case">
+                                <strong>Datos pequeños, tarea similar:</strong> Fine-tuning
+                            </div>
+                            <div class="case">
+                                <strong>Datos pequeños, tarea diferente:</strong> Congelar capas base
+                            </div>
+                            <div class="case">
+                                <strong>Datos grandes, tarea similar:</strong> Fine-tuning completo
+                            </div>
+                            <div class="case">
+                                <strong>Datos grandes, tarea diferente:</strong> Entrenar desde cero
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Regularización</h3>
+                        <p>Técnicas para evitar el sobreajuste (overfitting):</p>
+                        <ul>
+                            <li><strong>Early Stopping:</strong> Parar cuando validación empeora</li>
+                            <li><strong>L2 Regularization:</strong> Penalizar pesos grandes</li>
+                            <li><strong>L1 Regularization:</strong> Usar valor absoluto de pesos</li>
+                            <li><strong>Dropout:</strong> Desconectar neuronas aleatoriamente</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-lightbulb"></i> Ventajas y Desventajas</h3>
+                    <div class="pros-cons-grid">
+                        <div class="pros">
+                            <h4><i class="fas fa-check-circle"></i> Ventajas</h4>
+                            <ul>
+                                <li>Extracción automática de características</li>
+                                <li>Capacidad de resolver problemas complejos</li>
+                                <li>Flexibilidad arquitectural</li>
+                                <li>Buen rendimiento en muchas tareas</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4><i class="fas fa-times-circle"></i> Desventajas</h4>
+                            <ul>
+                                <li>Limitaciones en razonamiento</li>
+                                <li>Falta de explicabilidad</li>
+                                <li>Requieren grandes cantidades de datos</li>
+                                <li>Computacionalmente costosas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p><i class="fas fa-graduation-cap"></i> Infografía educativa sobre Redes Neuronales</p>
+                <p>Basada en el curso de Introducción a las Redes Neuronales</p>
+                <div class="footer-links">
+                    <a href="https://github.com/IrvinVazquez" target="_blank">
+                        <i class="fab fa-github"></i> Repositorio del Curso
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
